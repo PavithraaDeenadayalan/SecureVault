@@ -3,7 +3,7 @@
 A cryptographically secure CLI vault for storing sensitive information with military-grade encryption, secure deletion, and zero-knowledge architecture.
 
 
-#Screenshot:
+# Screenshot:
 ![securevault](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/help.png)
 ---
 
@@ -156,7 +156,7 @@ Confirm master password: ********
 ✓ Vault initialized successfully!
 ℹ Vault location: /home/user/.securevault
 ```
-#Screenshot:
+# Screenshot:
 ![image](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/init.png)
 
 ### Add Your First Entry
@@ -205,7 +205,7 @@ Total entries: 3
 ```
 
 ---
-#Screenshot:
+# Screenshot:
 ![image](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/list.png)
 
 ## 📖 Usage Guide
@@ -244,7 +244,7 @@ python securevault.py stats
 python securevault.py --help
 ```
 ---
-#Screenshot:
+# Screenshot:
 ![image](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/export.png)
 
 ## 🔬 Cryptographic Implementation
@@ -463,7 +463,7 @@ README.md                        # This file
   "proof_hash": "sha256_hash_of_deletion_event"
 }
 ```
-#Screenshot:
+# Screenshot:
 ![image](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/deleteCert.png)
 
 ## License
