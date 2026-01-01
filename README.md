@@ -1,6 +1,8 @@
 # SecureVault - Zero-Knowledge Personal Data Manager
 
 A cryptographically secure CLI vault for storing sensitive information with military-grade encryption, secure deletion, and zero-knowledge architecture.
+
+
 ![securevault](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/help.png)
 ---
 
@@ -40,7 +42,7 @@ A cryptographically secure CLI vault for storing sensitive information with mili
 
 ---
 
-## Security Architecture
+## ✨ Security Architecture
 
 ### Encryption Flow
 
@@ -85,7 +87,7 @@ MASTER KEY (256-bit)
 
 ---
 
-##  Installation
+##  ✨ Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -368,7 +370,7 @@ Pass 3-7: Overwrite with cryptographically random data (CSPRNG)
 
 ---
 
-## 🛡️ Security Considerations
+## 🛡️  Security Considerations
 
 ### Threat Model
 
