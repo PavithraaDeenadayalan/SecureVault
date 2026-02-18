@@ -20,30 +20,30 @@ A cryptographically secure CLI vault for storing sensitive information with mili
 
 ---
 
-## ✨ Features
+##  Features
 
 ### Core Functionality
-- ✅ **AES-256-GCM Encryption** - Industry-standard authenticated encryption
-- ✅ **Argon2 Key Derivation** - Memory-hard password hashing (winner of PHC)
-- ✅ **CSPRNG** - Cryptographically secure random number generation for all keys, salts, and nonces
-- ✅ **HMAC-SHA256** - Integrity verification for tamper detection
-- ✅ **Zero-Knowledge Architecture** - Master password never leaves your device
+-  **AES-256-GCM Encryption** - Industry-standard authenticated encryption
+-  **Argon2 Key Derivation** - Memory-hard password hashing (winner of PHC)
+-  **CSPRNG** - Cryptographically secure random number generation for all keys, salts, and nonces
+-  **HMAC-SHA256** - Integrity verification for tamper detection
+-  **Zero-Knowledge Architecture** - Master password never leaves your device
 
 ### Advanced Features
-- 🔥 **DOD 5220.22-M Secure Deletion** - 7-pass overwrite with cryptographically random data
-- 🔥 **Deletion Certificates** - Cryptographic proof of data destruction
-- 🔥 **Auto-lock Mechanism** - Automatic vault locking after 5 minutes of inactivity
-- 🔥 **Encrypted Export/Import** - Secure vault backups with integrity verification
-- 🔥 **Multi-type Storage** - Support for passwords, API keys, notes, and files
+-  **DOD 5220.22-M Secure Deletion** - 7-pass overwrite with cryptographically random data
+-  **Deletion Certificates** - Cryptographic proof of data destruction
+-  **Auto-lock Mechanism** - Automatic vault locking after 5 minutes of inactivity
+-  **Encrypted Export/Import** - Secure vault backups with integrity verification
+-  **Multi-type Storage** - Support for passwords, API keys, notes, and files
 
 ### User Experience
-- 🎨 **Professional CLI Interface** - Clean, color-coded output with clear feedback
-- 🎨 **Comprehensive Error Handling** - Informative error messages and graceful failures
-- 🎨 **Cross-platform Support** - Works on Windows, macOS, and Linux
+-  **Professional CLI Interface** - Clean, color-coded output with clear feedback
+-  **Comprehensive Error Handling** - Informative error messages and graceful failures
+-  **Cross-platform Support** - Works on Windows, macOS, and Linux
 
 ---
 
-## ✨ Security Architecture
+##  Security Architecture
 
 ### Encryption Flow
 
@@ -88,7 +88,7 @@ MASTER KEY (256-bit)
 
 ---
 
-##  ✨ Installation
+##   Installation
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -136,7 +136,7 @@ chmod +x securevault.py
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Initialize Vault
 
@@ -208,7 +208,7 @@ Total entries: 3
 # Screenshot:
 ![image](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/list.png)
 
-## 📖 Usage Guide
+##  Usage Guide
 
 ### All Available Commands
 
@@ -247,7 +247,7 @@ python securevault.py --help
 # Screenshot:
 ![image](https://github.com/PavithraaDeenadayalan/SecureVault/blob/main/export.png)
 
-## 🔬 Cryptographic Implementation
+##  Cryptographic Implementation
 
 ### 1. Random Number Generation (CSPRNG)
 
@@ -374,34 +374,34 @@ Pass 3-7: Overwrite with cryptographically random data (CSPRNG)
 
 ---
 
-## 🛡️ Security Considerations
+##  Security Considerations
 
 ### Threat Model
 
 **SecureVault Protects Against:**
-✅ Unauthorized access to vault file
-✅ Password cracking attacks (Argon2 memory-hardness)
-✅ Brute force attacks (strong key derivation)
-✅ Data tampering (HMAC integrity checks)
-✅ Forensic data recovery (secure deletion)
-✅ Weak randomness (CSPRNG for all random values)
+ Unauthorized access to vault file
+ Password cracking attacks (Argon2 memory-hardness)
+ Brute force attacks (strong key derivation)
+ Data tampering (HMAC integrity checks)
+ Forensic data recovery (secure deletion)
+ Weak randomness (CSPRNG for all random values)
 
 **SecureVault Does NOT Protect Against:**
-⚠️ **Keyloggers**: Malware that records your master password
-⚠️ **Memory dumps**: Capturing RAM while vault is unlocked
-⚠️ **Rubber-hose cryptanalysis**: Physical coercion
-⚠️ **Side-channel attacks**: Timing attacks, power analysis (requires physical access)
-⚠️ **Weak passwords**: If you choose "password123", no crypto can save you
+ **Keyloggers**: Malware that records your master password
+ **Memory dumps**: Capturing RAM while vault is unlocked
+ **Rubber-hose cryptanalysis**: Physical coercion
+ **Side-channel attacks**: Timing attacks, power analysis (requires physical access)
+ **Weak passwords**: If you choose "password123", no crypto can save you
 
 ### Best Practices
 
 #### Strong Master Password
 ```
-❌ Bad: password123
-❌ Bad: MyVault2024
-✅ Good: correct-horse-battery-staple
-✅ Good: Tr0ub4dor&3-Extended-Version
-✅ Good: Random passphrase from password manager
+ Bad: password123
+ Bad: MyVault2024
+ Good: correct-horse-battery-staple
+ Good: Tr0ub4dor&3-Extended-Version
+ Good: Random passphrase from password manager
 ```
 
 **Recommendations**:
@@ -426,7 +426,7 @@ Pass 3-7: Overwrite with cryptographically random data (CSPRNG)
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 .securevault/                    # Vault directory (created in home folder)
