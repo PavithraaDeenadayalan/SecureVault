@@ -488,7 +488,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Security
 ⚠️ **Please do not open public issues for security vulnerabilities.**
-Email security concerns to: [email]
+Email security concerns to: [pavithraadeenadayalan35@gmail.com]
 
 ## Author
 
