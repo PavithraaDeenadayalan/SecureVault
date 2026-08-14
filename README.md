@@ -1,6 +1,6 @@
 # SecureVault - Zero-Knowledge Personal Data Manager
 
-A cryptographically secure CLI vault for storing sensitive information with military-grade encryption, secure deletion, and zero-knowledge architecture.
+A cryptographically secure CLI vault for storing sensitive information with modern authenticated encryption using AES-256-GCM secure deletion, and zero-knowledge architecture.
 
 
 # Screenshot:
@@ -30,7 +30,7 @@ A cryptographically secure CLI vault for storing sensitive information with mili
 -  **Zero-Knowledge Architecture** - Master password never leaves your device
 
 ### Advanced Features
--  **DOD 5220.22-M Secure Deletion** - 7-pass overwrite with cryptographically random data
+-  **Multi-pass Secure Deletion** – 7-pass overwrite approach
 -  **Deletion Certificates** - Cryptographic proof of data destruction
 -  **Auto-lock Mechanism** - Automatic vault locking after 5 minutes of inactivity
 -  **Encrypted Export/Import** - Secure vault backups with integrity verification
@@ -80,11 +80,11 @@ MASTER KEY (256-bit)
 
 ### Key Security Properties
 
-1. **Forward Secrecy**: Each entry has its own encryption key
-2. **Authentication**: AES-GCM provides built-in authentication
-3. **Integrity**: HMAC prevents tampering with vault file
-4. **Confidentiality**: AES-256 is computationally infeasible to break
-5. **Non-deterministic**: Random nonces prevent identical plaintexts from producing identical ciphertexts
+1. **Authentication**: AES-GCM provides built-in authentication
+2. **Integrity**: HMAC prevents tampering with vault file
+3. **Confidentiality**: AES-256 is computationally infeasible to break
+4. **Non-deterministic**: Random nonces prevent identical plaintexts from producing identical ciphertexts
+5. **Key Separation**: Each entry uses a unique encryption key
 
 ---
 
@@ -314,7 +314,7 @@ Output: 256-bit key            # AES-256 key size
 **Why AES-256-GCM?**:
 - **AES-256**: Industry standard, used by NSA for TOP SECRET
 - **GCM Mode**: Provides both confidentiality AND authentication
-- **NIST Approved**: FIPS 140-2 compliant
+- **AES-256-GCM based on the NIST-standardized AES algorithm**
 
 **How It Works**:
 ```
@@ -327,7 +327,7 @@ Authentication Tag verifies:
 ```
 
 **Security Properties**:
-- **Confidentiality**: Computationally infeasible to decrypt without key (2^256 attempts)
+- **Confidentiality**: Computationally infeasible to decrypt without key (Provides a 256-bit key space)
 - **Authentication**: 128-bit tag prevents tampering
 - **Efficiency**: Hardware acceleration on modern CPUs (AES-NI)
 
@@ -368,9 +368,7 @@ Pass 3-7: Overwrite with cryptographically random data (CSPRNG)
 ```
 
 **Why 7 Passes?**:
-- Defeats magnetic force microscopy
 - Defeats analog recovery techniques
-- Exceeds requirements for SECRET-level data destruction
 
 ---
 
