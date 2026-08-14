@@ -1,6 +1,6 @@
-# SecureVault - Zero-Knowledge Personal Data Manager
+# SecureVault — Zero-Knowledge Personal Data Manager
 
-A cryptographically secure CLI vault for storing sensitive information with modern authenticated encryption using AES-256-GCM secure deletion, and zero-knowledge architecture.
+A cryptographic CLI vault for storing sensitive information using AES-256-GCM authenticated encryption, Argon2 key derivation, integrity verification, secure deletion, and a zero-knowledge architecture.
 
 
 # Screenshot:
@@ -30,8 +30,8 @@ A cryptographically secure CLI vault for storing sensitive information with mode
 -  **Zero-Knowledge Architecture** - Master password never leaves your device
 
 ### Advanced Features
--  **Multi-pass Secure Deletion** – 7-pass overwrite approach
--  **Deletion Certificates** - Cryptographic proof of data destruction
+-  **DoD 5220.22-M-Inspired Secure Deletion** – 7-pass overwrite approach using zero, one, and cryptographically random data
+-  **Deletion Certificates** - Tamper-evident deletion record
 -  **Auto-lock Mechanism** - Automatic vault locking after 5 minutes of inactivity
 -  **Encrypted Export/Import** - Secure vault backups with integrity verification
 -  **Multi-type Storage** - Support for passwords, API keys, notes, and files
@@ -98,7 +98,6 @@ MASTER KEY (256-bit)
 
 ```bash
 # Download the securevault.py file
-# Or clone from GitHub (once hosted)
 git clone https://github.com/pavithraadeenadayalan/securevault.git
 cd securevault
 ```
@@ -254,9 +253,6 @@ python securevault.py --help
 **Purpose**: Generate cryptographically secure random values for keys, salts, nonces, and IDs.
 
 **Implementation**: Uses Python's `secrets` module, which provides access to the operating system's cryptographically secure random number generator:
-- Linux: `/dev/urandom`
-- Windows: `CryptGenRandom()`
-- macOS: `/dev/urandom`
 
 **Usage in SecureVault**:
 ```python
@@ -312,7 +308,7 @@ Output: 256-bit key            # AES-256 key size
 **Purpose**: Encrypt data with authentication.
 
 **Why AES-256-GCM?**:
-- **AES-256**: Industry standard, used by NSA for TOP SECRET
+- **AES-256**: Widely standardized symmetric encryption algorithm providing a 256-bit key space
 - **GCM Mode**: Provides both confidentiality AND authentication
 - **AES-256-GCM based on the NIST-standardized AES algorithm**
 
@@ -320,14 +316,17 @@ Output: 256-bit key            # AES-256 key size
 ```
 Plaintext + Key + Nonce → AES-256-GCM → Ciphertext + Authentication Tag
 
-Authentication Tag verifies:
-- Data hasn't been modified
-- Data hasn't been truncated
-- Nonce hasn't been reused
+Authentication Tag provides:
+- Integrity protection
+- Authenticity verification
+- Detection of modified ciphertext or associated data
+
+Nonce Requirement:
+- A unique nonce must be used with each encryption under the same key
 ```
 
 **Security Properties**:
-- **Confidentiality**: Computationally infeasible to decrypt without key (Provides a 256-bit key space)
+- **Confidentiality**: AES-256 provides a 256-bit key space, making exhaustive key search computationally infeasible when implemented correctly.
 - **Authentication**: 128-bit tag prevents tampering
 - **Efficiency**: Hardware acceleration on modern CPUs (AES-NI)
 
@@ -339,7 +338,7 @@ Authentication Tag verifies:
 
 **Implementation**:
 ```python
-HMAC = SHA256(Key, Ciphertext + Nonce + Tag)
+HMAC-SHA256(HMAC_Key, Ciphertext + Nonce + Tag)
 ```
 
 **Why Double Protection?**:
@@ -354,22 +353,16 @@ HMAC = SHA256(Key, Ciphertext + Nonce + Tag)
 
 ---
 
-### 5. Secure Deletion (DOD 5220.22-M)
+### 5. Secure Deletion — DoD 5220.22-M-Inspired
 
-**Purpose**: Make deleted data unrecoverable.
+**Purpose:** Reduce the recoverability of deleted data through multi-pass overwriting.
 
-**The Problem**: Simply deleting files doesn't remove data from disk. Data remains until overwritten and can be recovered with forensic tools.
+SecureVault implements a 7-pass overwrite procedure based on the DoD 5220.22-M approach:
 
-**The Solution**: DOD 5220.22-M Standard
-```
+```text
 Pass 1: Overwrite with 0x00 (all zeros)
 Pass 2: Overwrite with 0xFF (all ones)
-Pass 3-7: Overwrite with cryptographically random data (CSPRNG)
-```
-
-**Why 7 Passes?**:
-- Defeats analog recovery techniques
-
+Pass 3-7: Overwrite with cryptographically random data
 ---
 
 ##  Security Considerations
@@ -381,7 +374,7 @@ Pass 3-7: Overwrite with cryptographically random data (CSPRNG)
  Password cracking attacks (Argon2 memory-hardness)
  Brute force attacks (strong key derivation)
  Data tampering (HMAC integrity checks)
- Forensic data recovery (secure deletion)
+ Basic data recovery attempts against overwritten files
  Weak randomness (CSPRNG for all random values)
 
 **SecureVault Does NOT Protect Against:**
